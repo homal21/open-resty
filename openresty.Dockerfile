@@ -22,6 +22,7 @@ COPY ./http.lua /usr/local/openresty/lualib/resty/
 COPY ./http_connect.lua /usr/local/openresty/lualib/resty/
 COPY ./http_headers.lua /usr/local/openresty/lualib/resty/
 COPY ./service_router.lua /usr/local/openresty/lualib/
+COPY ./gateway_routing.lua /usr/local/openresty/lualib/
 
 # Expose the necessary ports
 EXPOSE 80 443 8080

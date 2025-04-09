@@ -5,17 +5,17 @@ local http = require "resty.http"
 _M.services = {
     ["/hub"] = {
         name = "serviceHub",
-        upstream = "serviceHub",
+        upstream = "demosign.easyca.vn:8890",
         auth_endpoint = "/api/authorization/gettoken",
         auth_path = "^/hub/authorization/gettoken/?$", -- Fixed to match actual path in config
         token_field = "accessToken"
     },
     ["/easysign"] = {
         name = "serviceSign",
-        upstream = "serviceSign",
+        upstream = "demosign.easyca.vn:8080",
         auth_endpoint = "/api/authenticate",
         auth_path = "^/easysign/authenticate/?$", -- Fixed to match expected path
-        token_field = "accessToken"
+        token_field = "id_token"
     }
 }
 
@@ -56,6 +56,7 @@ function _M.authenticate(service, credentials)
     end
 
     -- No cached token, authenticate with the service
+    ngx.log(ngx.ERR, "service upstream: " .. service.upstream .. service.auth_endpoint)
     local upstream_url = "http://" .. service.upstream .. service.auth_endpoint
     ngx.log(ngx.INFO, "Authenticating with ", upstream_url)
 
@@ -172,14 +173,14 @@ end
 -- Handle routing for a regular request
 function _M.handle_routing_request()
     local path = ngx.var.uri
+    ngx.log(ngx.ERR, "path: ", path)
     local service = _M.get_service_for_path(path)
-
     if not service then
         ngx.status = 404
         ngx.say("Service not found for path: " .. path)
         return ngx.exit(404)
     end
-
+    ngx.log(ngx.ERR, "service: ", service.name)
     -- Check for authentication header
     local auth_header = ngx.req.get_headers()["Authorization"]
     if not auth_header or not auth_header:match("^Bearer ") then
@@ -227,7 +228,7 @@ function _M.handle_routing_request()
     ngx.req.set_header("X-Authenticated-User", username)
 
     -- Optionally log the successful routing
-    ngx.log(ngx.INFO, "Routing request to ", service.upstream, " for user ", username)
+    ngx.log(ngx.ERR, "Routing request to ", service.upstream, " for user ", username)
 
     -- The actual proxying happens in the nginx config via proxy_pass
     return

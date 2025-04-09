@@ -80,8 +80,6 @@ function _M.incr_and_expire(key, limit, expire_time)
     end
 
     red:set_keepalive(1000000, 100)
-
-    ngx.log(ngx.NOTICE, "Rate count for ", key, ": ", new_count)
     return new_count, nil
 end
 
@@ -128,9 +126,9 @@ function _M.check_violations(ip, threshold)
         return nil, err
     end
 
-    -- Set expiry of 24 hours if first violation
+    -- Set expiry of 1 min if first violation
     if count == 0 then
-        red:expire(key, 86400)  -- 24 hours
+        red:expire(key, 60)  -- 1 min
     end
 
     red:set_keepalive(1000000, 100)
