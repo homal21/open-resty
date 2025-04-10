@@ -12,9 +12,12 @@ services:
     depends_on:
       - keycloak
       - redis
+      - logstash
     environment:
       - KEYCLOAK_URL=http://keycloak:9090
       - FRONTEND_URL=http://localhost:8081
+    volumes:
+      - openresty_logs:/usr/local/openresty/nginx/logs
     networks:
       - my_network
     restart: always
@@ -39,6 +42,8 @@ services:
       - postgres
     command: ["start-dev", "--http-port=9090"]
     restart: always
+    networks:
+      - my_network
 
   postgres:
     image: postgres:13
@@ -49,7 +54,8 @@ services:
     volumes:
       - keycloak_postgres_data:/var/lib/postgresql/data
     restart: always
-
+    networks:
+      - my_network
 
   elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.5.0
@@ -58,22 +64,44 @@ services:
       - discovery.type=single-node
       - ELASTIC_PASSWORD=changeme
       - xpack.security.enabled=false
+      - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
     ports:
       - "9200:9200"
     volumes:
       - es_data:/usr/share/elasticsearch/data
+    networks:
+      - my_network
 
   logstash:
     image: docker.elastic.co/logstash/logstash:8.5.0
     container_name: logstash
     volumes:
-      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./logstash/pipeline:/usr/share/logstash/pipeline
+      - ./logstash/config:/usr/share/logstash/config
     environment:
       - xpack.monitoring.enabled=false
+      - "LS_JAVA_OPTS=-Xms256m -Xmx256m"
     ports:
       - "5044:5044"  # Beats input
       - "5000:5000"  # TCP input
       - "9600:9600"  # Monitoring API
+    depends_on:
+      - elasticsearch
+    networks:
+      - my_network
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:8.5.0
+    container_name: filebeat
+    volumes:
+      - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - openresty_logs:/usr/local/openresty/nginx/logs:ro
+    command: filebeat -e -strict.perms=false
+    depends_on:
+      - logstash
+      - openresty
+    networks:
+      - my_network
 
   kibana:
     image: docker.elastic.co/kibana/kibana:8.5.0
@@ -82,6 +110,10 @@ services:
       - ELASTICSEARCH_HOSTS=http://elasticsearch:9200
     ports:
       - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - my_network
 
   redis:
     image: redis:latest
@@ -97,6 +129,8 @@ volumes:
   redis_data:
   keycloak_postgres_data:
   es_data:
+    driver: local
+  openresty_logs:
     driver: local
 
 networks:

@@ -1,0 +1,57 @@
+# filebeat.yml
+filebeat.inputs:
+  - type: log
+    enabled: true
+    paths:
+      - /usr/local/openresty/nginx/logs/access.log
+    json.keys_under_root: true
+    json.add_error_key: true
+    fields:
+      service: api_gateway
+      type: access
+    fields_under_root: true
+    tags: ["nginx", "api-gateway", "access"]
+
+  - type: log
+    enabled: true
+    paths:
+      - /usr/local/openresty/nginx/logs/api_metrics.log
+    json.keys_under_root: true
+    json.add_error_key: true
+    fields:
+      service: api_metrics
+      type: metrics
+    fields_under_root: true
+    tags: ["nginx", "api-gateway", "metrics"]
+
+  - type: log
+    enabled: true
+    paths:
+      - /usr/local/openresty/nginx/logs/error.log
+    fields:
+      service: api_gateway
+      type: error
+    fields_under_root: true
+    tags: ["nginx", "api-gateway", "error"]
+    multiline:
+      pattern: '^[0-9]{4}/[0-9]{2}/[0-9]{2}'
+      negate: true
+      match: after
+
+processors:
+  - add_host_metadata: ~
+  - add_docker_metadata: ~
+  - add_cloud_metadata: ~
+
+# Đầu ra đến Logstash
+output.logstash:
+  hosts: ["logstash:5044"]
+
+# Cấu hình chung
+logging.level: info
+logging.to_files: true
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0600
