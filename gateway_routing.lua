@@ -23,7 +23,6 @@ local routes = {
     }
 }
 
--- Log chi tiết cho ELK
 function _M.log_request_details(route, target_uri, start_time, response)
     local request_time = ngx.now() - start_time
     local status = response and response.status or 0
@@ -48,7 +47,7 @@ function _M.log_request_details(route, target_uri, start_time, response)
 end
 
 function _M.find_route(uri, method)
-    -- Đầu tiên thử khớp chính xác
+-- 100%
     local route = routes[uri]
     if route and route.methods[method] then
         local target_uri = uri
@@ -57,10 +56,9 @@ function _M.find_route(uri, method)
         end
         return route, target_uri
     end
-
-    -- Sau đó thử khớp tiền tố cho các đường dẫn động
+-- 0 ~ 99%
     for prefix, route_config in pairs(routes) do
-        if uri:find(prefix, 1, true) == 1 then -- Kiểm tra xem URI có bắt đầu bằng tiền tố không
+        if uri:find(prefix, 1, true) == 1 then
             if route_config.methods[method] then
                 local target_uri = uri
                 if route_config.rewrite then
@@ -94,7 +92,6 @@ function _M.route()
 
     ngx.log(ngx.INFO, "URI: ", uri, ", Method: ", method)
 
-    -- Find matching route
     local route, target_uri = _M.find_route(uri, method)
     local err
 
@@ -112,13 +109,10 @@ function _M.route()
 
     ngx.log(ngx.INFO, "Route found, upstream + target: ", route.upstream .. target_uri)
 
-    -- Check if method is allowed
     local httpc = http.new()
 
-    -- Thiết lập timeout
-    httpc:set_timeout(5000)  -- 5 giây
+    httpc:set_timeout(5000)
 
-    -- Get request body if needed
     local body = nil
     if method == "POST" or method == "PUT" then
         ngx.req.read_body()
@@ -126,11 +120,9 @@ function _M.route()
         ngx.log(ngx.INFO, "Request body size: ", body and #body or 0)
     end
 
-    -- Get headers and query params
     local headers = ngx.req.get_headers()
     local args = ngx.req.get_uri_args()
 
-    -- Thêm headers theo dõi
     headers["X-Request-ID"] = ngx.var.request_id
     headers["X-Forwarded-For"] = ngx.var.remote_addr
     headers["X-Forwarded-Proto"] = ngx.var.scheme
@@ -138,7 +130,6 @@ function _M.route()
 
     ngx.log(ngx.INFO, "Making request to: ", route.upstream .. target_uri)
 
-    -- Make the backend request
     local res, err = httpc:request_uri(route.upstream .. target_uri, {
         method = method,
         body = body,
@@ -154,15 +145,12 @@ function _M.route()
         return nil, "Failed to connect to backend: " .. (err or "unknown error")
     end
 
-    -- Thêm thông tin upstream vào response headers
     if res.headers then
         res.headers["X-Upstream"] = route.upstream
     end
 
-    -- Log thông tin kết quả
     _M.log_request_details(route, target_uri, start_time, res)
 
-    -- Kiểm tra và xử lý phản hồi tùy theo loại nội dung
     if res.status >= 400 then
         ngx.log(ngx.WARN, "Backend returned error status: ", res.status)
     else

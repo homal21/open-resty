@@ -17,7 +17,7 @@ services:
       - KEYCLOAK_URL=http://keycloak:9090
       - FRONTEND_URL=http://localhost:8081
     volumes:
-      - openresty_logs:/usr/local/openresty/nginx/logs
+      - ./openresty_logs:/usr/local/openresty/nginx/logs
     networks:
       - my_network
     restart: always
@@ -95,7 +95,8 @@ services:
     container_name: filebeat
     volumes:
       - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - openresty_logs:/usr/local/openresty/nginx/logs:ro
+      - ./openresty_logs:/usr/local/openresty/nginx/logs:ro
+#      - openresty_logs:/usr/local/openresty/nginx/logs:ro
     command: filebeat -e -strict.perms=false
     depends_on:
       - logstash

@@ -22,7 +22,7 @@ function _M.set_token(username, service, token, ttl)
     end
 
     local key = username .. ":" .. service
-    ngx.log(ngx.ERR, "🔹 Storing token for ", key)
+    ngx.log(ngx.ERR, "Storing token for ", key)
     local ok, err = red:set(key, token)
     if not ok then
         ngx.log(ngx.ERR, "Failed to set token: ", err)
@@ -83,28 +83,25 @@ function _M.incr_and_expire(key, limit, expire_time)
     return new_count, nil
 end
 
--- Add a function to add an IP to the blacklist
 function _M.add_to_blacklist(ip)
     local red, err = _M.connect()
     if not red then
         return nil, err
     end
 
-    local ok, err = red:sadd("ip_blacklist", ip)
+    local ok, err = red:set("blacklist:" .. ip, "1", "NX", "EX", 300)
     if not ok then
         ngx.log(ngx.ERR, "Failed to add IP to blacklist: ", err)
         return nil, err
     end
 
-    -- Also add to shared dict for immediate effect
-    ngx.shared.ip_blacklist:set(ip, true)
+    ngx.shared.ip_blacklist:set(ip, true, 300)
 
     red:set_keepalive(1000000, 100)
     ngx.log(ngx.WARN, "Added IP to blacklist: ", ip)
     return true
 end
 
--- Check if an IP has exceeded the violation threshold
 function _M.check_violations(ip, threshold)
     local red, err = _M.connect()
     if not red then
@@ -126,9 +123,8 @@ function _M.check_violations(ip, threshold)
         return nil, err
     end
 
-    -- Set expiry of 1 min if first violation
     if count == 0 then
-        red:expire(key, 60)  -- 1 min
+        red:expire(key, 60)
     end
 
     red:set_keepalive(1000000, 100)

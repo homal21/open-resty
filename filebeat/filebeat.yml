@@ -48,7 +48,7 @@ output.logstash:
   hosts: ["logstash:5044"]
 
 # Cấu hình chung
-logging.level: info
+logging.level: debug
 logging.to_files: true
 logging.files:
   path: /var/log/filebeat
