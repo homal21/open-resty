@@ -1225,3 +1225,342 @@ stack traceback:
 2025/04/15 08:53:35 [notice] 1#1: worker process 7 exited with code 0
 2025/04/15 08:53:35 [notice] 1#1: signal 29 (SIGIO) received
 2025/04/15 08:53:35 [notice] 1#1: signal 29 (SIGIO) received
+2025/04/15 09:11:07 [notice] 15#15: signal process started
+2025/04/15 09:11:07 [notice] 1#1: signal 1 (SIGHUP) received from 15, reconfiguring
+2025/04/15 09:11:07 [notice] 1#1: signal 1 (SIGHUP) received from 15, reconfiguring
+2025/04/15 09:11:07 [notice] 1#1: reconfiguring
+2025/04/15 09:11:07 [notice] 1#1: reconfiguring
+2025/04/15 09:11:07 [warn] 1#1: [lua] http_connect.lua:21: failed to load module `resty.openssl.*`, mTLS isn't supported without lua-resty-openssl:
+/usr/local/openresty/lualib/resty/http_connect.lua:15: module 'resty.openssl.x509.chain' not found:
+	no field package.preload['resty.openssl.x509.chain']
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain/init.ljbc'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.ljbc'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain/init.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain/init.lua'
+	no file './resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/luajit/share/luajit-2.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/share/lua/5.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/share/lua/5.1/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.so'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.so'
+	no file './resty/openssl/x509/chain.so'
+	no file '/usr/local/lib/lua/5.1/resty/openssl/x509/chain.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty/openssl/x509/chain.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+	no file '/usr/local/openresty/site/lualib/resty.so'
+	no file '/usr/local/openresty/lualib/resty.so'
+	no file './resty.so'
+	no file '/usr/local/lib/lua/5.1/resty.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+stack traceback:
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/resty/http_connect.lua:15: in function </usr/local/openresty/lualib/resty/http_connect.lua:14>
+	[C]: in function 'xpcall'
+	/usr/local/openresty/lualib/resty/http_connect.lua:14: in main chunk
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/resty/http.lua:166: in main chunk
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/service_router.lua:3: in main chunk
+	[C]: in function 'require'
+	init_by_lua(nginx.conf:79):5: in main chunk
+2025/04/15 09:11:07 [warn] 1#1: [lua] http_connect.lua:21: failed to load module `resty.openssl.*`, mTLS isn't supported without lua-resty-openssl:
+/usr/local/openresty/lualib/resty/http_connect.lua:15: module 'resty.openssl.x509.chain' not found:
+	no field package.preload['resty.openssl.x509.chain']
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain/init.ljbc'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.ljbc'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain/init.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain/init.lua'
+	no file './resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/luajit/share/luajit-2.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/share/lua/5.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/share/lua/5.1/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.so'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.so'
+	no file './resty/openssl/x509/chain.so'
+	no file '/usr/local/lib/lua/5.1/resty/openssl/x509/chain.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty/openssl/x509/chain.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+	no file '/usr/local/openresty/site/lualib/resty.so'
+	no file '/usr/local/openresty/lualib/resty.so'
+	no file './resty.so'
+	no file '/usr/local/lib/lua/5.1/resty.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+stack traceback:
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/resty/http_connect.lua:15: in function </usr/local/openresty/lualib/resty/http_connect.lua:14>
+	[C]: in function 'xpcall'
+	/usr/local/openresty/lualib/resty/http_connect.lua:14: in main chunk
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/resty/http.lua:166: in main chunk
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/service_router.lua:3: in main chunk
+	[C]: in function 'require'
+	init_by_lua(nginx.conf:79):5: in main chunk
+2025/04/15 09:11:07 [info] 1#1: [lua] init_by_lua(nginx.conf:79):7: Loaded all Lua libraries into OpenResty!
+2025/04/15 09:11:07 [notice] 1#1: using the "epoll" event method
+2025/04/15 09:11:07 [notice] 1#1: using the "epoll" event method
+2025/04/15 09:11:07 [notice] 1#1: start worker processes
+2025/04/15 09:11:07 [notice] 1#1: start worker processes
+2025/04/15 09:11:07 [notice] 1#1: start worker process 21
+2025/04/15 09:11:07 [notice] 1#1: start worker process 21
+2025/04/15 09:11:08 [notice] 14#14: gracefully shutting down
+2025/04/15 09:11:08 [notice] 14#14: gracefully shutting down
+2025/04/15 09:11:08 [notice] 14#14: exiting
+2025/04/15 09:11:08 [notice] 14#14: exiting
+2025/04/15 09:11:08 [notice] 14#14: exit
+2025/04/15 09:11:08 [notice] 1#1: signal 17 (SIGCHLD) received from 14
+2025/04/15 09:11:08 [notice] 1#1: signal 17 (SIGCHLD) received from 14
+2025/04/15 09:11:08 [notice] 1#1: worker process 14 exited with code 0
+2025/04/15 09:11:08 [notice] 1#1: worker process 14 exited with code 0
+2025/04/15 09:11:08 [notice] 1#1: signal 29 (SIGIO) received
+2025/04/15 09:11:08 [notice] 1#1: signal 29 (SIGIO) received
+2025/04/15 09:11:15 [info] 21#21: *108 client closed connection while waiting for request, client: 172.25.0.1, server: 0.0.0.0:8080
+2025/04/15 09:11:15 [info] 21#21: *109 [lua] init_worker_by_lua(nginx.conf:88):68: setup_blacklist_timer(): Successfully set up periodic blacklist refresh, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:15 [info] 21#21: *111 [lua] init_worker_by_lua(nginx.conf:88):54: load_blacklist_from_redis(): Successfully loaded 0 IPs into blacklist, context: ngx.timer, client: 172.25.0.1, server: 0.0.0.0:8080
+2025/04/15 09:11:15 [info] 21#21: *109 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:15 [info] 21#21: *109 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:15 [info] 21#21: *109 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:15 [info] 21#21: *109 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:15 [info] 21#21: *109 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:16 [info] 21#21: *109 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"method":"POST","target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.24100017547607,"response_size":252,"timestamp":1744708276150,"request_id":"e44c84e86f3055afd4308bc1a182e2c5","client_ip":"172.25.0.1","content_type":"application\/json","status":200,"user_agent":"PostmanRuntime\/7.43.2","route":"http:\/\/demosign.easyca.vn:8080"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:16 [info] 21#21: *109 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:16 [info] 21#21: *109 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.241 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:20 [info] 21#21: *109 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:20 [info] 21#21: *109 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:20 [info] 21#21: *109 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:20 [info] 21#21: *109 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:20 [info] 21#21: *109 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:20 [info] 21#21: *109 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"method":"POST","target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.53500008583069,"response_size":253,"timestamp":1744708280816,"request_id":"c504747f6c0d333f99298a5c37fa6b15","client_ip":"172.25.0.1","content_type":"application\/json","status":200,"user_agent":"PostmanRuntime\/7.43.2","route":"http:\/\/demosign.easyca.vn:8080"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:20 [info] 21#21: *109 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:20 [info] 21#21: *109 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.535 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:25 [info] 21#21: *109 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:25 [info] 21#21: *109 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:25 [info] 21#21: *109 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:25 [info] 21#21: *109 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:25 [info] 21#21: *109 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:25 [info] 21#21: *109 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"method":"POST","target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.2649998664856,"response_size":252,"timestamp":1744708285520,"request_id":"c04ee54e52feaaa7c06471ed979b2f18","client_ip":"172.25.0.1","content_type":"application\/json","status":200,"user_agent":"PostmanRuntime\/7.43.2","route":"http:\/\/demosign.easyca.vn:8080"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:25 [info] 21#21: *109 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:25 [info] 21#21: *109 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.265 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:28 [info] 21#21: *109 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:28 [info] 21#21: *109 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:28 [info] 21#21: *109 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:28 [info] 21#21: *109 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:28 [info] 21#21: *109 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:28 [info] 21#21: *109 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"method":"POST","target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.5310001373291,"response_size":252,"timestamp":1744708288901,"request_id":"f6ad63896fcfb7cbd05ecc15e8e2feeb","client_ip":"172.25.0.1","content_type":"application\/json","status":200,"user_agent":"PostmanRuntime\/7.43.2","route":"http:\/\/demosign.easyca.vn:8080"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:28 [info] 21#21: *109 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:28 [info] 21#21: *109 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.531 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:32 [info] 21#21: *109 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:32 [info] 21#21: *109 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:32 [info] 21#21: *109 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:32 [info] 21#21: *109 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:32 [info] 21#21: *109 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:33 [info] 21#21: *109 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"method":"POST","target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.30999994277954,"response_size":253,"timestamp":1744708293296,"request_id":"e5b0060d4ac64a3fb0b878eb14d843c7","client_ip":"172.25.0.1","content_type":"application\/json","status":200,"user_agent":"PostmanRuntime\/7.43.2","route":"http:\/\/demosign.easyca.vn:8080"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:33 [info] 21#21: *109 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:11:33 [info] 21#21: *109 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.310 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:12:15 [info] 21#21: *119 [lua] init_worker_by_lua(nginx.conf:88):54: load_blacklist_from_redis(): Successfully loaded 0 IPs into blacklist, context: ngx.timer, client: 172.25.0.1, server: 0.0.0.0:8080
+2025/04/15 09:13:15 [info] 21#21: *120 [lua] init_worker_by_lua(nginx.conf:88):54: load_blacklist_from_redis(): Successfully loaded 0 IPs into blacklist, context: ngx.timer, client: 172.25.0.1, server: 0.0.0.0:8080
+2025/04/15 09:14:15 [info] 21#21: *121 [lua] init_worker_by_lua(nginx.conf:88):54: load_blacklist_from_redis(): Successfully loaded 0 IPs into blacklist, context: ngx.timer, client: 172.25.0.1, server: 0.0.0.0:8080
+2025/04/15 09:14:25 [notice] 36#36: signal process started
+2025/04/15 09:14:25 [notice] 1#1: signal 1 (SIGHUP) received from 36, reconfiguring
+2025/04/15 09:14:25 [notice] 1#1: signal 1 (SIGHUP) received from 36, reconfiguring
+2025/04/15 09:14:25 [notice] 1#1: reconfiguring
+2025/04/15 09:14:25 [notice] 1#1: reconfiguring
+2025/04/15 09:14:25 [warn] 1#1: [lua] http_connect.lua:21: failed to load module `resty.openssl.*`, mTLS isn't supported without lua-resty-openssl:
+/usr/local/openresty/lualib/resty/http_connect.lua:15: module 'resty.openssl.x509.chain' not found:
+	no field package.preload['resty.openssl.x509.chain']
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain/init.ljbc'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.ljbc'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain/init.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain/init.lua'
+	no file './resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/luajit/share/luajit-2.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/share/lua/5.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/share/lua/5.1/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.so'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.so'
+	no file './resty/openssl/x509/chain.so'
+	no file '/usr/local/lib/lua/5.1/resty/openssl/x509/chain.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty/openssl/x509/chain.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+	no file '/usr/local/openresty/site/lualib/resty.so'
+	no file '/usr/local/openresty/lualib/resty.so'
+	no file './resty.so'
+	no file '/usr/local/lib/lua/5.1/resty.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+stack traceback:
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/resty/http_connect.lua:15: in function </usr/local/openresty/lualib/resty/http_connect.lua:14>
+	[C]: in function 'xpcall'
+	/usr/local/openresty/lualib/resty/http_connect.lua:14: in main chunk
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/resty/http.lua:166: in main chunk
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/service_router.lua:3: in main chunk
+	[C]: in function 'require'
+	init_by_lua(nginx.conf:79):5: in main chunk
+2025/04/15 09:14:25 [warn] 1#1: [lua] http_connect.lua:21: failed to load module `resty.openssl.*`, mTLS isn't supported without lua-resty-openssl:
+/usr/local/openresty/lualib/resty/http_connect.lua:15: module 'resty.openssl.x509.chain' not found:
+	no field package.preload['resty.openssl.x509.chain']
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain/init.ljbc'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.ljbc'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain/init.ljbc'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain/init.lua'
+	no file './resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/luajit/share/luajit-2.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/share/lua/5.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/share/lua/5.1/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/openssl/x509/chain.lua'
+	no file '/usr/local/openresty/luajit/share/lua/5.1/resty/openssl/x509/chain/init.lua'
+	no file '/usr/local/openresty/site/lualib/resty/openssl/x509/chain.so'
+	no file '/usr/local/openresty/lualib/resty/openssl/x509/chain.so'
+	no file './resty/openssl/x509/chain.so'
+	no file '/usr/local/lib/lua/5.1/resty/openssl/x509/chain.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty/openssl/x509/chain.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+	no file '/usr/local/openresty/site/lualib/resty.so'
+	no file '/usr/local/openresty/lualib/resty.so'
+	no file './resty.so'
+	no file '/usr/local/lib/lua/5.1/resty.so'
+	no file '/usr/local/openresty/luajit/lib/lua/5.1/resty.so'
+	no file '/usr/local/lib/lua/5.1/loadall.so'
+stack traceback:
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/resty/http_connect.lua:15: in function </usr/local/openresty/lualib/resty/http_connect.lua:14>
+	[C]: in function 'xpcall'
+	/usr/local/openresty/lualib/resty/http_connect.lua:14: in main chunk
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/resty/http.lua:166: in main chunk
+	[C]: in function 'require'
+	/usr/local/openresty/lualib/service_router.lua:3: in main chunk
+	[C]: in function 'require'
+	init_by_lua(nginx.conf:79):5: in main chunk
+2025/04/15 09:14:25 [info] 1#1: [lua] init_by_lua(nginx.conf:79):7: Loaded all Lua libraries into OpenResty!
+2025/04/15 09:14:25 [notice] 1#1: using the "epoll" event method
+2025/04/15 09:14:25 [notice] 1#1: using the "epoll" event method
+2025/04/15 09:14:25 [notice] 1#1: start worker processes
+2025/04/15 09:14:25 [notice] 1#1: start worker processes
+2025/04/15 09:14:25 [notice] 1#1: start worker process 37
+2025/04/15 09:14:25 [notice] 1#1: start worker process 37
+2025/04/15 09:14:25 [notice] 21#21: gracefully shutting down
+2025/04/15 09:14:25 [notice] 21#21: gracefully shutting down
+2025/04/15 09:14:25 [info] 21#21: *123 [lua] init_worker_by_lua(nginx.conf:88):54: load_blacklist_from_redis(): Successfully loaded 0 IPs into blacklist, context: ngx.timer, client: 172.25.0.1, server: 0.0.0.0:8080
+2025/04/15 09:14:25 [notice] 21#21: exiting
+2025/04/15 09:14:25 [notice] 21#21: exiting
+2025/04/15 09:14:25 [notice] 21#21: exit
+2025/04/15 09:14:25 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2025/04/15 09:14:25 [notice] 1#1: signal 17 (SIGCHLD) received from 21
+2025/04/15 09:14:25 [notice] 1#1: worker process 21 exited with code 0
+2025/04/15 09:14:25 [notice] 1#1: worker process 21 exited with code 0
+2025/04/15 09:14:25 [notice] 1#1: signal 29 (SIGIO) received
+2025/04/15 09:14:25 [notice] 1#1: signal 29 (SIGIO) received
+2025/04/15 09:14:38 [info] 37#37: *124 client closed connection while waiting for request, client: 172.25.0.1, server: 0.0.0.0:8080
+2025/04/15 09:14:38 [info] 37#37: *125 [lua] init_worker_by_lua(nginx.conf:88):68: setup_blacklist_timer(): Successfully set up periodic blacklist refresh, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:38 [info] 37#37: *127 [lua] init_worker_by_lua(nginx.conf:88):54: load_blacklist_from_redis(): Successfully loaded 0 IPs into blacklist, context: ngx.timer, client: 172.25.0.1, server: 0.0.0.0:8080
+2025/04/15 09:14:38 [info] 37#37: *125 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:38 [info] 37#37: *125 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:38 [info] 37#37: *125 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:38 [info] 37#37: *125 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:38 [info] 37#37: *125 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:38 [info] 37#37: *125 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.25399994850159,"timestamp":1744708478438,"request_id":"db5df61cee13943e744a721aea589140","client_ip":"172.25.0.1","status":200,"response_size":250,"method":"POST","route":"http:\/\/demosign.easyca.vn:8080","user_agent":"PostmanRuntime\/7.43.2","content_type":"application\/json"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:38 [info] 37#37: *125 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:38 [info] 37#37: *125 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.254 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:41 [info] 37#37: *125 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:41 [info] 37#37: *125 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:41 [info] 37#37: *125 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:41 [info] 37#37: *125 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:41 [info] 37#37: *125 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:41 [info] 37#37: *125 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.19099998474121,"timestamp":1744708481442,"request_id":"6483acfe47c20146dd111b2c9352ffae","client_ip":"172.25.0.1","status":200,"response_size":253,"method":"POST","route":"http:\/\/demosign.easyca.vn:8080","user_agent":"PostmanRuntime\/7.43.2","content_type":"application\/json"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:41 [info] 37#37: *125 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:41 [info] 37#37: *125 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.191 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:43 [info] 37#37: *125 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:43 [info] 37#37: *125 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:43 [info] 37#37: *125 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:43 [info] 37#37: *125 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:43 [info] 37#37: *125 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:43 [info] 37#37: *125 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.13600015640259,"timestamp":1744708483601,"request_id":"5ba39f1dc037ae778b1acc9accfb1a52","client_ip":"172.25.0.1","status":200,"response_size":254,"method":"POST","route":"http:\/\/demosign.easyca.vn:8080","user_agent":"PostmanRuntime\/7.43.2","content_type":"application\/json"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:43 [info] 37#37: *125 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:43 [info] 37#37: *125 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.136 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:45 [info] 37#37: *125 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:45 [info] 37#37: *125 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:45 [info] 37#37: *125 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:45 [info] 37#37: *125 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:45 [info] 37#37: *125 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:46 [info] 37#37: *125 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.22399997711182,"timestamp":1744708486198,"request_id":"0d811a07c13ff7a0a96578d6f7269a04","client_ip":"172.25.0.1","status":200,"response_size":253,"method":"POST","route":"http:\/\/demosign.easyca.vn:8080","user_agent":"PostmanRuntime\/7.43.2","content_type":"application\/json"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:46 [info] 37#37: *125 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:46 [info] 37#37: *125 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.224 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:48 [info] 37#37: *125 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:48 [info] 37#37: *125 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:48 [info] 37#37: *125 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:48 [info] 37#37: *125 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:48 [info] 37#37: *125 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:48 [info] 37#37: *125 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.19600009918213,"timestamp":1744708488608,"request_id":"8c83200a0f4e062140104281d55fabc8","client_ip":"172.25.0.1","status":200,"response_size":252,"method":"POST","route":"http:\/\/demosign.easyca.vn:8080","user_agent":"PostmanRuntime\/7.43.2","content_type":"application\/json"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:48 [info] 37#37: *125 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:48 [info] 37#37: *125 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.196 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:50 [info] 37#37: *125 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:50 [info] 37#37: *125 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:50 [info] 37#37: *125 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:50 [info] 37#37: *125 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:50 [info] 37#37: *125 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:50 [info] 37#37: *125 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.35199999809265,"timestamp":1744708490863,"request_id":"885daf9813f22b3b56c4c4013cd0f7a0","client_ip":"172.25.0.1","status":200,"response_size":254,"method":"POST","route":"http:\/\/demosign.easyca.vn:8080","user_agent":"PostmanRuntime\/7.43.2","content_type":"application\/json"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:50 [info] 37#37: *125 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:50 [info] 37#37: *125 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.352 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:52 [info] 37#37: *125 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:52 [info] 37#37: *125 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:52 [info] 37#37: *125 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:52 [info] 37#37: *125 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:52 [info] 37#37: *125 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:53 [info] 37#37: *125 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.16599988937378,"timestamp":1744708493054,"request_id":"a8cec4c34fe9af794658c272906656fb","client_ip":"172.25.0.1","status":200,"response_size":254,"method":"POST","route":"http:\/\/demosign.easyca.vn:8080","user_agent":"PostmanRuntime\/7.43.2","content_type":"application\/json"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:53 [info] 37#37: *125 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:53 [info] 37#37: *125 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.166 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:59 [info] 37#37: *125 [lua] gateway_routing.lua:90: route(): Starting route function, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:59 [info] 37#37: *125 [lua] gateway_routing.lua:95: route(): URI: /api/easysign/authenticate, Method: POST, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:59 [info] 37#37: *125 [lua] gateway_routing.lua:113: route(): Route found, upstream + target: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:59 [info] 37#37: *125 [lua] gateway_routing.lua:126: route(): Request body size: 101, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:59 [info] 37#37: *125 [lua] gateway_routing.lua:139: route(): Making request to: http://demosign.easyca.vn:8080/api/authenticate, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:59 [info] 37#37: *125 [lua] gateway_routing.lua:47: log_request_details(): API_GATEWAY_METRICS: {"target_uri":"\/api\/authenticate","uri":"\/api\/easysign\/authenticate","request_time":0.15300011634827,"timestamp":1744708499538,"request_id":"8a1f18fc95cbe33a230ea5077ebf6c3a","client_ip":"172.25.0.1","status":200,"response_size":252,"method":"POST","route":"http:\/\/demosign.easyca.vn:8080","user_agent":"PostmanRuntime\/7.43.2","content_type":"application\/json"}, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:59 [info] 37#37: *125 [lua] gateway_routing.lua:169: route(): Backend request succeeded with status: 200, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:14:59 [info] 37#37: *125 [lua] content_by_lua(nginx.conf:231):7: API_METRICS uri=/api/easysign/authenticate status=200 time=0.153 upstream=http://demosign.easyca.vn:8080, client: 172.25.0.1, server: localhost, request: "POST /api/easysign/authenticate HTTP/1.1", host: "localhost:8080"
+2025/04/15 09:15:38 [info] 37#37: *138 [lua] init_worker_by_lua(nginx.conf:88):54: load_blacklist_from_redis(): Successfully loaded 0 IPs into blacklist, context: ngx.timer, client: 172.25.0.1, server: 0.0.0.0:8080
+2025/04/15 09:16:21 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/04/15 09:16:21 [notice] 1#1: signal 3 (SIGQUIT) received, shutting down
+2025/04/15 09:16:21 [notice] 37#37: gracefully shutting down
+2025/04/15 09:16:21 [notice] 37#37: gracefully shutting down
+2025/04/15 09:16:21 [info] 37#37: *139 [lua] init_worker_by_lua(nginx.conf:88):54: load_blacklist_from_redis(): Successfully loaded 0 IPs into blacklist, context: ngx.timer, client: 172.25.0.1, server: 0.0.0.0:8080
+2025/04/15 09:16:21 [notice] 37#37: exiting
+2025/04/15 09:16:21 [notice] 37#37: exiting
+2025/04/15 09:16:21 [notice] 37#37: exit
+2025/04/15 09:16:21 [notice] 1#1: signal 17 (SIGCHLD) received from 37
+2025/04/15 09:16:21 [notice] 1#1: signal 17 (SIGCHLD) received from 37
+2025/04/15 09:16:21 [notice] 1#1: worker process 37 exited with code 0
+2025/04/15 09:16:21 [notice] 1#1: worker process 37 exited with code 0
+2025/04/15 09:16:21 [notice] 1#1: exit
+2025/04/15 09:16:21 [notice] 1#1: exit

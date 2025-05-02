@@ -1,0 +1,45 @@
+_format_version: "3.0"
+_transform: true
+
+# =====================================================
+# SERVICES & ROUTES
+# ============================================= ========
+
+services:
+  # API SERVICE
+  - name: easysign
+    url: http://demosign.easyca.vn:8080
+    routes:
+      - name: easysign-route
+        paths:
+          - /easysign
+          - /easysign/
+          - /easysign/~
+        strip_path: true
+        preserve_host: false
+        protocols:
+          - http
+          - https
+#        plugins:
+#          - name: proxy-rewrite
+#            config:
+#              regex_priority: 1
+#              regex: "/easysign/(.*)"
+#              replacement: "/api/$1"
+#    plugins:
+#      - name: my-rate-limiter
+#        config:
+#          limit: 5  # Số lượng request tối đa trong window_size
+#          window_size: 60  # Khoảng thời gian (giây)
+#          max_violations: 5  # Số lần vi phạm tối đa trước khi bị ban
+#          redis_host: redis-server  # Tên container Redis trong docker-compose
+#          redis_port: 6379
+  - name: hub
+    url: http://demosign.easyca.vn:8890
+    routes:
+      - name: hub-route
+        paths:
+          - /hub
+          - /hub/
+          - /hub/~
+        strip_path: true

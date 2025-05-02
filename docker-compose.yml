@@ -1,26 +1,94 @@
 version: '3.9'
 
 services:
-  openresty:
+#  openresty:
+#    build:
+#      context: .
+#      dockerfile: ./openresty.Dockerfile
+#    ports:
+#      - 80:80
+#      - 443:443
+#      - 8080:8080
+#    depends_on:
+#      - keycloak
+#      - redis
+#      - logstash
+#    environment:
+#      - KEYCLOAK_URL=http://keycloak:9090
+#      - FRONTEND_URL=http://localhost:8081
+#    volumes:
+#      - ./openresty_logs:/usr/local/openresty/nginx/logs
+#    networks:
+#      - my_network
+#    restart: always
+
+  kong:
+#    image: kong:latest
     build:
       context: .
-      dockerfile: ./openresty.Dockerfile
+      dockerfile: kong.Dockerfile
+    environment:
+      - KONG_DATABASE=off
+      - KONG_PG_HOST=kong-database
+      - KONG_PG_USER=kong
+      - KONG_PG_PASSWORD=kong
+      - KONG_PG_DATABASE=kong
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001, 0.0.0.0:8444 ssl
+      - KONG_PROXY_LISTEN=0.0.0.0:8000, 0.0.0.0:443 ssl
+      - KEYCLOAK_URL=http://keycloak:9090
+      - FRONTEND_URL=http://localhost:8081
+      - KONG_DECLARATIVE_CONFIG=/etc/kong/kong.yml
+#      - KONG_PLUGINS=bundled
     ports:
-      - 80:80
+      - 8000:8000
       - 443:443
-      - 8080:8080
+      - 8001:8001 # Kong Admin API
+      - 8444:8444 # Kong Admin API SSL
+      - 8080:8080 # Kong Manager (if using Kong Enterprise)
     depends_on:
+      - kong-database
       - keycloak
       - redis
       - logstash
-    environment:
-      - KEYCLOAK_URL=http://keycloak:9090
-      - FRONTEND_URL=http://localhost:8081
     volumes:
-      - ./openresty_logs:/usr/local/openresty/nginx/logs
+      - ./kong_logs:/usr/local/kong/logs
+      - ./service/kong.yml:/etc/kong/kong.yml
+      - ./my-rate-limiter:/usr/local/share/lua/5.1/kong/plugins/my-rate-limiter
+#      - ./plugins:/usr/local/share/lua/5.1/kong/plugins
     networks:
       - my_network
     restart: always
+
+  kong-database:
+    image: postgres:13
+    environment:
+      POSTGRES_DB: kong
+      POSTGRES_USER: kong
+      POSTGRES_PASSWORD: kong
+    volumes:
+      - kong_postgres_data:/var/lib/postgresql/data
+    networks:
+      - my_network
+    restart: always
+
+  kong-migrations:
+    image: kong:latest
+    environment:
+      - KONG_DATABASE=postgres
+      - KONG_PG_HOST=kong-database
+      - KONG_PG_USER=kong
+      - KONG_PG_PASSWORD=kong
+      - KONG_PG_DATABASE=kong
+    command: kong migrations bootstrap
+    depends_on:
+      - kong-database
+    networks:
+      - my_network
+    restart: on-failure
 
   keycloak:
     image: quay.io/keycloak/keycloak:latest
@@ -95,12 +163,13 @@ services:
     container_name: filebeat
     volumes:
       - ./filebeat/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
-      - ./openresty_logs:/usr/local/openresty/nginx/logs:ro
-#      - openresty_logs:/usr/local/openresty/nginx/logs:ro
+#      - ./openresty_logs:/usr/local/openresty/nginx/logs:ro
+      - ./kong_logs:/usr/local/kong/logs:ro
     command: filebeat -e -strict.perms=false
     depends_on:
       - logstash
-      - openresty
+      - kong
+#      - openresty
     networks:
       - my_network
 
@@ -129,10 +198,13 @@ services:
 volumes:
   redis_data:
   keycloak_postgres_data:
+  kong_postgres_data:
   es_data:
     driver: local
-  openresty_logs:
+  kong_logs:
     driver: local
+#  openresty_logs:
+#    driver: local
 
 networks:
   my_network:  # Define the custom network
