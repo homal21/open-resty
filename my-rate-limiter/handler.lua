@@ -11,7 +11,7 @@ CustomRateLimiter.VERSION = "1.0.0"
 
 local VIOLATIONS_KEY_PREFIX = "custom_rate_limit_violations:"
 local BANNED_KEY_PREFIX = "custom_rate_limit_banned:"
-local BAN_DURATION = 3600  -- 1 giờ tính bằng giây
+local BAN_DURATION = 60  -- 1 giờ tính bằng giây
 
 -- Các hàm xử lý Redis
 local function get_redis_connection(conf)
@@ -89,41 +89,48 @@ function CustomRateLimiter:access(conf)
   local ban_key = BANNED_KEY_PREFIX .. client_ip
   if is_ip_banned(red, ban_key) then
     -- IP is banned, reject the request
-    kong.response.exit(403, { message = "IP của bạn đã tạm thời bị chặn do vi phạm giới hạn lượt truy cập nhiều lần" })
+    local ban_ttl = red:ttl(ban_key)
+    kong.response.set_header("X-IP-Ban-Remaining", ban_ttl)
+    kong.response.exit(403, { message = "IP blocked !!! Retry after " .. ban_ttl .. "second" })
   end
 
+
   -- Apply regular rate limiting
-  local current_timestamp = timestamp.get_utc()
-  local periods = timestamp.get_timestamps(current_timestamp)
+  local window_size = conf.window_size
+  local current_time = ngx.time()
+  local window_time = math.floor(current_time/ window_size) * window_size
+--   local current_timestamp = timestamp.get_utc()
+--   local periods = timestamp.get_timestamps(current_timestamp)
 
+
+--   local window = nil
   local exceeded = false
-  local window = nil
+  local rate_key = "ratelimit:" .. client_ip .. ":" .. window_time
 
-  for period, period_date in pairs(periods) do
-    local rate_key = "rate_limit:" .. client_ip .. ":" .. period
+--   for period, period_date in pairs(periods) do
+--     local rate_key = "rate_limit:" .. client_ip .. ":" .. conf.window_size
 
     -- Check rate limit
-    local count, err = red:get(rate_key)
-    if err then
-      kong.log.err("Error getting rate limit counter: ", err)
-    else
-      count = tonumber(count) or 0
+  local count, err = red:get(rate_key)
+  if err then
+    kong.log.err("Error getting rate limit counter: ", err)
+  else
+    count = tonumber(count) or 0
+    kong.log.err("COUNT: ", count)
+  end
 
-      if count >= conf.limit then
-        exceeded = true
-        window = period
-        break
-      end
+  if count >= conf.limit then
+    exceeded = true
+  else
 
       -- Increment counter
       local ok, err = red:incr(rate_key)
       if not ok then
         kong.log.err("Error incrementing rate limit counter: ", err)
       end
-
-      -- Set expiration
-      red:expire(rate_key, timestamp.get_window_size(period))
-    end
+      local ttl = window_time + window_size - current_time
+      kong.log.err("TTL: ", ttl)
+      red:expire(rate_key, ttl)
   end
 
   -- Set headers
@@ -133,18 +140,19 @@ function CustomRateLimiter:access(conf)
   if exceeded then
     local violations_key = VIOLATIONS_KEY_PREFIX .. client_ip
     local violations = increment_violations(red, violations_key)
-
+    kong.log.err("violations: ", violations)
     if violations >= conf.max_violations then
       ban_ip(red, ban_key, violations_key, client_ip)
       kong.response.set_header("X-IP-Ban-Duration", BAN_DURATION)
-      kong.response.exit(403, { message = "IP của bạn đã tạm thời bị chặn do vi phạm giới hạn lượt truy cập nhiều lần" })
+      kong.response.exit(403, { message = "IP blocked in " .. BAN_DURATION })
     else
       kong.response.set_header("X-RateLimit-Violations", violations)
       kong.response.set_header("X-RateLimit-Remaining", 0)
-      kong.response.exit(429, { message = "Đã vượt quá giới hạn API. Vi phạm " .. violations .. " trong " .. conf.max_violations .. " lần trước khi bị chặn." })
+      kong.response.exit(429, { message = "API limit. Violate " .. violations .. " in " .. conf.max_violations .. " will be blocked." })
     end
   else
     kong.response.set_header("X-RateLimit-Remaining", conf.limit - 1)
+    kong.response.set_header("X-RateLimit-Reset", window_time + window_size - current_time)
   end
 
   -- Return connection to pool

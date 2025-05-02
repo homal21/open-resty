@@ -23,16 +23,16 @@ services:
 #    restart: always
 
   kong:
-#    image: kong:latest
-    build:
-      context: .
-      dockerfile: kong.Dockerfile
+    image: kong:latest
+#    build:
+#      context: .
+#      dockerfile: kong.Dockerfile
     environment:
       - KONG_DATABASE=off
-      - KONG_PG_HOST=kong-database
-      - KONG_PG_USER=kong
-      - KONG_PG_PASSWORD=kong
-      - KONG_PG_DATABASE=kong
+#      - KONG_PG_HOST=kong-database
+#      - KONG_PG_USER=kong
+#      - KONG_PG_PASSWORD=kong
+#      - KONG_PG_DATABASE=kong
       - KONG_PROXY_ACCESS_LOG=/dev/stdout
       - KONG_ADMIN_ACCESS_LOG=/dev/stdout
       - KONG_PROXY_ERROR_LOG=/dev/stderr
@@ -42,13 +42,13 @@ services:
       - KEYCLOAK_URL=http://keycloak:9090
       - FRONTEND_URL=http://localhost:8081
       - KONG_DECLARATIVE_CONFIG=/etc/kong/kong.yml
-#      - KONG_PLUGINS=bundled
+      - KONG_LUA_PACKAGE_PATH=/usr/local/openresty/lualib/?.lua;;
+      - KONG_PLUGINS=bundled, my-rate-limiter
     ports:
       - 8000:8000
       - 443:443
       - 8001:8001 # Kong Admin API
       - 8444:8444 # Kong Admin API SSL
-      - 8080:8080 # Kong Manager (if using Kong Enterprise)
     depends_on:
       - kong-database
       - keycloak
