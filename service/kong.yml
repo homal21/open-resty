@@ -4,30 +4,48 @@ _transform: true
 # =====================================================
 # SERVICES & ROUTES
 # ============================================= ========
+upstreams:
+  - name: ssa-upstream
+    algorithm: round-robin
+    hash_on: none
+    slots: 1000
+    #    healthchecks:
+#      active:
+#        healthy:
+#          interval: 10
+#          successes: 1
+#      passive:
+#        unhealthy:
+#          http_failures: 3
+    targets:
+      - target: localhost:8668
+        weight: 100
+      - target: 10.100.110.7:8668
+        weight: 100
 
 services:
   # API SERVICE
-  - name: easysign
-    url: http://demosign.easyca.vn:8080
-    routes:
-      - name: easysign-route
-        paths:
-          - /easysign
-          - /easysign/
-          - /easysign/~
-        strip_path: true
-        preserve_host: false
-        protocols:
-          - http
-          - https
-#        plugins:
-#          - name: proxy-rewrite
-#            config:
-#              regex_priority: 1
-#              regex: "/easysign/(.*)"
-#              replacement: "/api/$1"
+#  - name: easysign
+#    url: http://localhost:8080
+#    routes:
+#      - name: easysign-route
+#        paths:
+#          - /easysign
+#          - /easysign/
+#          - /easysign/~
+#        strip_path: true
+#        preserve_host: false
+#        protocols:
+#          - http
+#          - https
+  #        plugins:
+  #          - name: proxy-rewrite
+  #            config:
+  #              regex_priority: 1
+  #              regex: "/easysign/(.*)"
+  #              replacement: "/api/$1"
   - name: hub
-    url: http://demosign.easyca.vn:8890
+    url: http://localhost:8890
     routes:
       - name: hub-route
         paths:
@@ -36,11 +54,31 @@ services:
           - /hub/~
         strip_path: true
 
+  - name: ekyc
+    url: http://localhost:8080
+    routes:
+      - name: ekyc-route
+        paths:
+          - /ekyc
+          - /ekyc/
+          - /ekyc/~
+        strip_path: true
+
+  - name: ssa
+    host: ssa-upstream
+    routes:
+      - name: ssa-route
+        paths:
+          - /ssa
+          - /ssa/
+          - /ssa/~
+        strip_path: true
+
 plugins:
   - name: my-rate-limiter
     config:
       limit: 5
       window_size: 60
       max_violations: 5
-      redis_host: redis-server
+      redis_host: localhost
       redis_port: 6379
